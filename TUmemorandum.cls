@@ -9,18 +9,6 @@
 % can be found in the LICENSE.md file in this package and at the following address: 
 % https://opensource.org/license/mit/
 %
-% BABEL support for multi language citations is a bit convoluted, 
-% using polyglossa and XeTeX instead 
-% \usepackage[japanese, english, provide*=*]{babel}
-% babel supports english and japanese typesetting. 
-% The languages are passed as parameters \usepackage[languages]{babel}
-% the provide*=* parameter loads all lagnuages, which may not be necessary. 
-% More info:
-% https://en.wikibooks.org/wiki/LaTeX/Internationalization
-% https://texdoc.org/serve/babel/0
-% \babelfont{rm}{Arial}
-% \babelfont[japanese]{rm}{IPAMincho}
-%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{TUmemorandum}[2010/07/31 - Tohoku University Memo Class, Including Logo]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -33,17 +21,22 @@
 % available at the documentation page on CTAN but l2tabu is 
 % originally a German package with English translation downstream
 %
-\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage[right=2cm,left=1.5cm,top=0cm, bottom=1cm,includehead,includefoot]{geometry}
+\RequirePackage{lipsum}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{english}
+\setmainfont{NotoSans-Regular}
+
+\RequirePackage[CJKspace]{xeCJK}
+\setCJKmainfont{Noto Sans JP}
+\setCJKsansfont{Noto Sans JP}
+\setCJKmonofont{Noto Sans JP}
 %
 % typography options
 % \RequirePackage{everypage}
 \RequirePackage{parskip} % Adds spacing between paragraphs
 \setlength{\parindent}{10pt} % Indent paragraphs
-%
-% \RequirePackage[english, japanese]{babel} % babel supports Japanese typesetting, some info:
-% https://texwiki.texjp.org/?Babel
-% https://mirrors.mit.edu/CTAN/macros/latex/contrib/babel-contrib/japanese/babel-japanese.pdf
 %
 \RequirePackage{hyperref}
 \RequirePackage[dvipsnames]{xcolor}
@@ -55,8 +48,8 @@
 %
 \hypersetup{
     colorlinks=true,
-    citecolor=Blue,
-    linkcolor=BlueViolet, % Requires dvipsnames in xcolor package.
+    citecolor=Emerald, % Requires dvipsnames in xcolor package.
+    linkcolor=OrangeRed, % Requires dvipsnames in xcolor package.
     filecolor=Plum, % Requires dvipsnames in xcolor package.   
     urlcolor=WildStrawberry, % Requires dvipsnames in xcolor package.
     pdftitle={Overleaf Example},
@@ -111,10 +104,10 @@
 %
 % Create the Letterhead and To/From Block with logo when logo is provided
 %
-\font\memofont=Arial-Bold at 15pt
-\font\memofontb=Arial-Bold at 13pt
-\font\titlefontbf=Arial-Bold at 12pt
-\font\titlefont=Arial at 12pt
+\font\memofont=NotoSans-Bold at 15pt
+\font\memofontb=NotoSans-Bold at 13pt
+\font\titlefontbf=NotoSans-Bold at 12pt
+\font\titlefont=NotoSans-Regular at 12pt
 %
 \renewcommand{\maketitle}{\makememotitle}
 \newcommand\makememotitle{
