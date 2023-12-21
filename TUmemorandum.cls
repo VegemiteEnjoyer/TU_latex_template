@@ -22,16 +22,36 @@
 % originally a German package with English translation downstream
 %
 \RequirePackage{fontspec}
+\RequirePackage{luatexja-fontspec}
 \RequirePackage[right=2cm,left=1.5cm,top=0cm, bottom=1cm,includehead,includefoot]{geometry}
 \RequirePackage{lipsum}
 \RequirePackage{polyglossia}
 \setdefaultlanguage{english}
-\setmainfont{NotoSans-Regular}
+% \setmainfont{Noto Sans Regular}
+\setmainfont{Noto Sans}[
+    RawFeature={+axis={wght=400}},
+]
+% Big thanks to Marcel Krüger for the following solution
+% https://tex.stackexchange.com/questions/644978/addfontfeatures-combining-issues
+% \setmainjfont{Noto Sans JP}[
+%     RawFeature={+axis={wght=400}},
+    
 
-\RequirePackage[CJKspace]{xeCJK}
-\setCJKmainfont{Noto Sans JP}
-\setCJKsansfont{Noto Sans JP}
-\setCJKmonofont{Noto Sans JP}
+% ]
+\setmainjfont{Noto Sans JP}[
+    RawFeature={+axis={wght=400}},
+    BoldFont=*,
+    BoldFeatures={RawFeature={+axis={wght=900,wdth=125}}},
+]
+% \setmainfont{NotoSans-Regular}
+\setmonofont{Noto Sans Mono}
+
+% \RequirePackage[CJKspace]{xeCJK}
+% \setCJKmainfont{Noto Sans JP}[
+%     RawFeature={+axis={wght=400}},
+% ]
+% \setCJKsansfont{Noto Sans JP}
+% \setCJKmonofont{Noto Sans JP}
 %
 % typography options
 % \RequirePackage{everypage}
